@@ -1,0 +1,229 @@
+"0","library(ec50estimator)"
+"0","df_ec50_LN <- estimate_EC50(diam ~ dose,"
+"0","                         data = dados,"
+"0","                         isolate_col = ""isolado"","
+"0","                         strata_col = c(""trat"", ""aval""),"
+"0","                         interval = ""delta"","
+"0","                         fct = drc::LN.3())"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Além disso: "
+"2","Mensagens de aviso:
+"
+"2","1: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","2: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Além disso: "
+"2","Mensagens de aviso:
+"
+"2","1: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","2: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Além disso: "
+"2","Mensagens de aviso:
+"
+"2","1: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","2: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  valor inicial em 'vmmin' não é finito
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [1]
+"
+"0","df_ec50_LL <- estimate_EC50(diam ~ dose,"
+"0","                         data = dados,"
+"0","                         isolate_col = ""isolado"","
+"0","                         strata_col = c(""trat"", ""aval""),"
+"0","                         interval = ""delta"","
+"0","                         fct = drc::LL.3())"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Além disso: "
+"2","Mensagens de aviso:
+"
+"2","1: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","2: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","3: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","4: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  valor não finito fornecido por optim
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [1]
+"
+"0","df_ec50_W1 <- estimate_EC50(diam ~ dose,"
+"0","                         data = dados,"
+"0","                         isolate_col = ""isolado"","
+"0","                         strata_col = c(""trat"", ""aval""),"
+"0","                         interval = ""delta"","
+"0","                         fct = drc::W1.3())"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Além disso: "
+"2","Mensagens de aviso:
+"
+"2","1: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","2: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  valor inicial em 'vmmin' não é finito
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"0","df_ec50_W2 <- estimate_EC50(diam ~ dose,"
+"0","                         data = dados,"
+"0","                         isolate_col = ""isolado"","
+"0","                         strata_col = c(""trat"", ""aval""),"
+"0","                         interval = ""delta"","
+"0","                         fct = drc::W2.3())"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [1]
+"
+"2","Além disso: "
+"2","Mensagens de aviso:
+"
+"2","1: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","2: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","3: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","4: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","5: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","6: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [1]
+"
+"2","Além disso: "
+"2","Mensagens de aviso:
+"
+"2","1: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","2: "
+"2","In sqrt(dEDval %*% varCov %*% dEDval) :"
+"2"," NaNs produzidos
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  valor não finito fornecido por optim
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [1]
+"
+"2","Error in optim(startVec, opfct, hessian = TRUE, method = optMethod, control = list(maxit = maxIt,  : 
+  non-finite finite-difference value [3]
+"
+"0","head(df_ec50_LL)"
