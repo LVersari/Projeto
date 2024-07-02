@@ -1,0 +1,31 @@
+{
+    "id": "9CA9CA82",
+    "path": "~/GitHub/Trab_final/Projeto/paginicial.qmd",
+    "project_path": "paginicial.qmd",
+    "type": "quarto_markdown",
+    "hash": "2202763775",
+    "contents": "",
+    "dirty": false,
+    "created": 1719946530764.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "11640:10005.3330078125",
+        "cursorPosition": "304,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1719946794,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1719946794385,
+    "read_only": false,
+    "read_only_alternatives": []
+}

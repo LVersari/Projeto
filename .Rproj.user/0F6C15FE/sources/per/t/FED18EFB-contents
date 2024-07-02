@@ -1,0 +1,21 @@
+---
+format: html
+editor: visual
+about:
+  template: marquee
+  id: about-block
+  image: "2.png"
+  image-shape: rectangle 
+---
+
+**Sensibilidade in vitro de isolados de *Corynespora cassiicola* a fungicidas, oriundos de áreas com o cultivo de soja-algodão em sucessão.**
+
+A baixa eficácia do controle químico na redução do progresso da doença Mancha Alvo (*Corynespora cassiicola*) em cultivos de soja e algodão, tem sido observada em diferentes regiões produtoras do Brasil. A eficiência reduzida dos fungicidas pode ser atribuída a redução ou perda de sensibilidade da população patogênica. Principalmente em regiões com o cultivo de plantas hospedeiras de C. cassiicola, como soja-algodão.
+
+O objetivo desse trabalho foi determinar a sensibilidade de isolados de *C*. *cassiicola* à fungicidas, obtidos a partir de amostras foliares de plantas de soja e algodão, por meio da técnica de inibição do crescimento micelial in vitro.
+
+Determinou-se a sensibilidade de dezessete isolados de *C. cassiicola*, oriundos de diferentes regiões produtoras com o cultivo de soja-algodão em sucessão. Os tratamentos utilizados foram: Fungicida 1 e Fungicida 3, nas concentrações 0,5 mg L^-1^ ; 1,0 mg L^-1^ ; 2,5 mg L^-1^ ; 5,0 mg L^-1^ ; 10 mg L^-1^ ; 20 mg L^-1^ ; 50 mg L^-1^ e Fungicida 2 nas concentrações 12,5 mg L^-1^ ; 50 mg L^-1^ ; 200 mg L^-1^ ; 250 mg L^-1^ ; 300 mg L^-1^ ; 400 mg L^-1^ ; 450 mg L^-1^ e a testemunha sem fungicida.
+
+O delineamento experimental empregado foi o inteiramente casualizado (DIC), com três repetições. De cada isolado foram transferidos discos de 5 mm de diâmetro para placas de Petri com meio BDA + tratamentos e incubados a 28°C. As medições do diâmetro médio da colônia fúngica foram realizadas durante quinze dias, com intervalo de dois a três dias entre cada avaliação. Os dados foram submetidos a análises de regressão não-linear, utilizando os modelos probit, logit, Weibull 1 e Weibull 2, para identificar o modelo que melhor representa a relação entre as concentrações de cada fungicida e os crescimentos miceliais de cada isolado, para determinar a CE50 (concentrações efetivas na redução do diâmetro de colônias do fungo em 50%).
+
+Com base na CE50 foi determinada a sensibilidade dos isolados aos fungicidas 1 e 3 em: alta sensibilidade, moderada sensibilidade e insensível. Para o fungicida 2 a sensibilidade foi classificada em: sensível e insensível.
