@@ -1,9 +1,0 @@
-"0","print(plot_LL)"
-"2","Aviso em transformation$transform(x) :"
-"2"," NaNs produzidos
-"
-"2","Aviso em scale_y_log10() :"
-"2","
- "
-"2"," [38;5;250m[32mlog-10[38;5;250m transformation introduced infinite values.[39m
-"

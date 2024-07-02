@@ -208,7 +208,13 @@ for (tratam in unique(medias$trat)) {
 }
 ```
 
-MODELOS DE REGRESSÃO - USANDO DIAM
+**Hipóteses**
+
+Hipótese nula (H0): Não há diferença de sensibilidade entre os isolados para nenhum dos fungicidas.
+
+Hipótese alternativa (H1): Há pelo menos uma diferença de sensibilidade entre os isolados para um dos fungicidas.
+
+**MODELOS DE REGRESSÃO - USANDO DIAM**
 
 ```{r}
 library(dplyr)
@@ -383,3 +389,45 @@ print(plot_LL)
 print(plot_W1)
 print(plot_W2)
 ```
+
+**Classificação da sensibilidade** **milecial**
+
+Com base nos critérios de informação Akaiake (AIC), foram selecionados para cada fungicida, isolado e avaliação, o melhor modelo matemático que representasse a relação **inibição do crescimento micelial (%)** *x* **Log doses fungicida (mg L^-1^),** para estimar a EC50 (Concentração efetiva de fungicida capaz de inibir 50% do crescimento micelial).
+
+Com base nos valores de EC50 foi classificada a sensibilidade dos isolados para cada fungicida e avaliação.
+
+Para os fungicidas **Fox** e **Orkestra** utilizou a classificação proposta por Edgington et al (1971).
+
+EC50 \< 1 mg L^-1^ (alta sensibilidade) ;
+
+EC50 entre 1 mg L^-1^ e 10 mg L^-1^ (moderada sensibilidade) ;
+
+EC50 entre 10,1 mg L^-1^ e 50 mg L^-1^ (pouca sensibilidade);
+
+EC50 \> 50 mg L^-1^ (insensibilidade).
+
+Para o fungicida **Mancozeb** a sensibilidade foi classificada em:
+
+Sensibilidade (EC50 \< 50 mg L^-1^);
+
+Insensibilidade (EC50 \> 50 mg L^-1^).
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(magick)
+imagem <- image_read("sensibilidade.png")
+print(imagem)
+```
+
+**Interpretação**
+
+Com base na EC50 e na classificação de sensibilidade dos isolados de *Corynespora cassiicola* aos fungicidas Fox, Orkestra e Mancozeb, rejeita a hipótese nula H0.
+
+Houve diferença de sensibilidade entre os isolados testados.
+
+Para o **Fungicida** **Fox** apenas o isolado 6 apresentou alta sensibilidade em todas as avaliações. Os isolados 1, 2, 3, 4 e 5 foram insensíveis ao fungicida Fox em todas as avaliações. Enquanto que os isolados 7, 8 e 9 apresentaram mudança de sensibilidade ao longo das avaliações.
+
+**Fungicida Orkestra**: os isolados 1 e 3 foram altamente sensíveis em todas avaliações, o isolado 4 pouco sensível e o isolado 5 moderadamente sensível. Os isolados 2, 6, 7, 8 e 9 tiveram mudanças de sensibilidade ao longo das avaliações, sendo o isolado nas ultimas avaliações insensível, os isolados 6 e 8 pouco sensíveis e os isolados 7 e 9 moderadamente sensíveis.
+
+**Fungicida Mancozeb**: Todos isolados foram sensíveis ao produto.
+
+Não houve uma relação entre origem dos isolados e padrão de sensibilidade aos fungicidas testados.

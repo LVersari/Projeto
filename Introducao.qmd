@@ -14,8 +14,74 @@ A baixa eficácia do controle químico na redução do progresso da doença Manc
 
 O objetivo desse trabalho foi determinar a sensibilidade de isolados de *C*. *cassiicola* à fungicidas, obtidos a partir de amostras foliares de plantas de soja e algodão, por meio da técnica de inibição do crescimento micelial in vitro.
 
-Determinou-se a sensibilidade de dezessete isolados de *C. cassiicola*, oriundos de diferentes regiões produtoras com o cultivo de soja-algodão em sucessão. Os tratamentos utilizados foram: Fungicida 1 e Fungicida 3, nas concentrações 0,5 mg L^-1^ ; 1,0 mg L^-1^ ; 2,5 mg L^-1^ ; 5,0 mg L^-1^ ; 10 mg L^-1^ ; 20 mg L^-1^ ; 50 mg L^-1^ e Fungicida 2 nas concentrações 12,5 mg L^-1^ ; 50 mg L^-1^ ; 200 mg L^-1^ ; 250 mg L^-1^ ; 300 mg L^-1^ ; 400 mg L^-1^ ; 450 mg L^-1^ e a testemunha sem fungicida.
+Determinou-se a sensibilidade de nove isolados de *C. cassiicola*, oriundos de diferentes regiões produtoras com o cultivo de soja-algodão em sucessão.
 
-O delineamento experimental empregado foi o inteiramente casualizado (DIC), com três repetições. De cada isolado foram transferidos discos de 5 mm de diâmetro para placas de Petri com meio BDA + tratamentos e incubados a 28°C. As medições do diâmetro médio da colônia fúngica foram realizadas durante quinze dias, com intervalo de dois a três dias entre cada avaliação. Os dados foram submetidos a análises de regressão não-linear, utilizando os modelos probit, logit, Weibull 1 e Weibull 2, para identificar o modelo que melhor representa a relação entre as concentrações de cada fungicida e os crescimentos miceliais de cada isolado, para determinar a CE50 (concentrações efetivas na redução do diâmetro de colônias do fungo em 50%).
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(stringr)
+library(rnaturalearthhires)
 
-Com base na CE50 foi determinada a sensibilidade dos isolados aos fungicidas 1 e 3 em: alta sensibilidade, moderada sensibilidade e insensível. Para o fungicida 2 a sensibilidade foi classificada em: sensível e insensível.
+library(rnaturalearth)
+
+library(tidyverse)
+
+library(sf)
+
+library(ggiraph)
+
+options("install.lock"=FALSE)
+library(conflicted)
+conflict_prefer("filter", "dplyr")
+conflict_prefer("lag", "dplyr")
+
+# Função para converter graus, minutos e segundos para graus decimais
+dms_to_decimal <- function(dms, direction) {
+  dms_split <- str_split(dms, "[°′”’\"]")[[1]]
+  degrees <- as.numeric(dms_split[1])
+  minutes <- as.numeric(dms_split[2])
+  seconds <- as.numeric(dms_split[3])
+  decimal <- degrees + minutes / 60 + seconds / 3600
+  if (direction %in% c("S", "W")) {
+    decimal <- -decimal
+  }
+  return(decimal)
+}
+
+# Dados das fazendas
+fazendas <- data.frame(
+  nome = c("1, 2 e 3 - Sapezal - MT", "4 - Sapezal - MT", "5 - Sapezal - MT", "6 - Diamantino - MT", "7 - Santa Terezinha - MT", 
+           "8 - Matupa - MT", "9 - Querência - MT"),
+  cidade = c("Sapezal - MT", "Sapezal - MT", "Sapezal - MT", "Diamantino - MT", "Santa Terezinha - MT", "Matupá-MT", "Querência - MT"),
+  lat = c("13°03’59”S", "13°49’24”S", "13°32’23”S", "14°10’49”S", "10°17”20”S", 
+          "10°7’27,6”S", "12°20’27”S"),
+  lon = c("58°38’14”W", "58°45’35”W", "58°42’47”W", "56°32’46”W", "50°47’53”W", "54°58’33”W", "52°22’45”W")
+)
+
+# Converter coordenadas para graus decimais
+fazendas <- fazendas |> 
+  mutate(lat_decimal = mapply(dms_to_decimal, str_replace_all(lat, "[^0-9°′”’\"]", ""), ifelse(grepl("S", lat), "S", "N")),
+         lon_decimal = mapply(dms_to_decimal, str_replace_all(lon, "[^0-9°′”’\"]", ""), ifelse(grepl("W", lon), "W", "E")))
+
+# Transformando os pontos em um objeto sf
+fazendas_sf <- st_as_sf(fazendas, coords = c("lon_decimal", "lat_decimal"), crs = 4326)
+
+# Dados do Brasil
+BRA <- ne_states(country = "Brazil", returnclass = "sf")
+
+# Plotando o mapa com os pontos e a legenda
+gg <- ggplot(BRA) +
+  geom_sf(fill = "white", color = "black", size = 0.3) +
+  geom_sf_interactive(data = fazendas_sf, aes(color = nome, tooltip = paste("Nome:", nome, "<br>Cidade:", cidade, "<br>Coordenadas:", lat, lon)), size = 3) +
+  theme_minimal() +
+  labs(title = "Mapa de pontos de coleta dos isolados",
+       color = "Tratamento/Fazenda")
+
+# Renderizando o gráfico interativo
+girafe(ggobj = gg)
+```
+
+Os tratamentos utilizados foram: Fungicidas Fox, Orkestra e Mancozeb, nas concentrações 0,5 mg L^-1^ ; 1,0 mg L^-1^ ; 2,5 mg L^-1^ ; 5,0 mg L^-1^ ; 10 mg L^-1^ ; 20 mg L^-1^ ; 50 mg L^-1^ e a testemunha sem fungicida.
+
+O delineamento experimental empregado foi o inteiramente casualizado (DIC), com três repetições. De cada isolado foram transferidos discos de 5 mm de diâmetro para placas de Petri com meio BDA + tratamentos e incubados a 28°C. As medições do diâmetro médio da colônia fúngica foram realizadas durante quinze dias, com intervalo de dois a três dias entre cada avaliação. Os dados foram submetidos a análises de regressão não-linear, utilizando os modelos probit, logit, Weibull 1, Weibull 2, LL.3 e LN.3 para identificar o modelo que melhor representa a relação Log doses de cada fungicida e crescimento micelial de cada isolado, para determinar a CE50 (concentrações efetivas na redução do diâmetro de colônias do fungo em 50%). A sensibilidade dos isolados foi classificada com base no valor da EC50 , para os fungicidas: Fox e Orkestra, Alta sensibilidade (\< 1 mg L^-1^), moderada sensibilidade (1 - 10 mg L^-1^) , pouca sensibilidade (10,1 - 50 mg L^-1^) e insensibilidade (\> 50 mg L^-1^), e para o fungicida Mancozeb: sensibilidade (\< 50 mg L^-1^) e insensibilidade (\> 50 \> 50 mg L^-1^).
+
+Os isolados apresentaram comportamentos distintos de sensibilidade entre si, para os fungicidas Fox e Orkestra, variando a sensibilidade entre alta sensibilidade e insensibilidade. Todos isolados foram sensíveis ao fungicidas Mancozeb. Não houve relação entre a origem e sensibilidade dos isolados ao fungicidas testados.

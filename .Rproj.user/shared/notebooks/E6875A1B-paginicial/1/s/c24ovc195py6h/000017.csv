@@ -1,6 +1,0 @@
-"0",""
-"0","datatable(df_ec50_W2 ,"
-"0","          extensions = 'Buttons',"
-"0","          options = list("
-"0","            dom = 'Bfrtip',"
-"0","            buttons = c('copy', 'excel')))"
