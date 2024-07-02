@@ -329,6 +329,7 @@ df_ec50_W2 <- estimate_EC50(diam ~ dose,
                          interval = "delta",
                          fct = drc::W2.3())
 head(df_ec50_LL)
+
 library(DT)
 datatable(df_ec50_W1 ,
           extensions = 'Buttons',
