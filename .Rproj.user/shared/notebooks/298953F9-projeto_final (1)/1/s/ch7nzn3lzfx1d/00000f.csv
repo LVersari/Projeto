@@ -1,0 +1,3 @@
+"0","library(readxl)"
+"0","dados <- read_excel(""SensibilidadeCory2020.xlsx"")"
+"0","head(dados)"

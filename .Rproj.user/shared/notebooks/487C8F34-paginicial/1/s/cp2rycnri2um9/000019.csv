@@ -1,0 +1,6 @@
+"0","library(DT)"
+"0","datatable(df_ec50_W1 ,"
+"0","          extensions = 'Buttons',"
+"0","          options = list("
+"0","            dom = 'Bfrtip',"
+"0","            buttons = c('copy', 'excel')))"
