@@ -28,58 +28,7 @@ library(sf)
 library(ggiraph)
 ```
 
-**2. Plotagem Mapa (origem dos isolados)**
-
-Função para converter graus, minutos e segundos para graus decimais
-
-```{r}
-# Função para converter graus, minutos e segundos para graus decimais
-dms_to_decimal <- function(dms, direction) {
-  dms_split <- str_split(dms, "[°′”’\"]")[[1]]
-  degrees <- as.numeric(dms_split[1])
-  minutes <- as.numeric(dms_split[2])
-  seconds <- as.numeric(dms_split[3])
-  decimal <- degrees + minutes / 60 + seconds / 3600
-  if (direction %in% c("S", "W")) {
-    decimal <- -decimal
-  }
-  return(decimal)
-}
-
-# Dados das fazendas
-fazendas <- data.frame(
-  nome = c("1, 2 e 3 - Faz. Águas de Março", "4 - Faz. Harmonia", "5 - Camila", "6 - Tamara/Juliano", "7 - Faz. Sinai", 
-           "8 - Faz. Chapadão", "9 - Geuzilene"),
-  cidade = c("Sapezal - MT", "Sapezal - MT", "Sapezal - MT", "Diamantino - MT", "Santa Terezinha - MT", "Matupá-MT", "Querência - MT"),
-  lat = c("13°03’59”S", "13°49’24”S", "13°32’23”S", "14°10’49”S", "10°17”20”S", 
-          "10°7’27,6”S", "12°20’27”S"),
-  lon = c("58°38’14”W", "58°45’35”W", "58°42’47”W", "56°32’46”W", "50°47’53”W", "54°58’33”W", "52°22’45”W")
-)
-
-# Converter coordenadas para graus decimais
-fazendas <- fazendas %>%
-  mutate(lat_decimal = mapply(dms_to_decimal, str_replace_all(lat, "[^0-9°′”’\"]", ""), ifelse(grepl("S", lat), "S", "N")),
-         lon_decimal = mapply(dms_to_decimal, str_replace_all(lon, "[^0-9°′”’\"]", ""), ifelse(grepl("W", lon), "W", "E")))
-
-# Transformando os pontos em um objeto sf
-fazendas_sf <- st_as_sf(fazendas, coords = c("lon_decimal", "lat_decimal"), crs = 4326)
-
-# Dados do Brasil
-BRA <- ne_states(country = "Brazil", returnclass = "sf")
-
-# Plotando o mapa com os pontos e a legenda
-gg <- ggplot(BRA) +
-  geom_sf(fill = "white", color = "black", size = 0.3) +
-  geom_sf_interactive(data = fazendas_sf, aes(color = nome, tooltip = paste("Nome:", nome, "<br>Cidade:", cidade, "<br>Coordenadas:", lat, lon)), size = 3) +
-  theme_minimal() +
-  labs(title = "Mapa de pontos de coleta dos isolados",
-       color = "Tratamento/Fazenda")
-
-# Renderizando o gráfico interativo
-girafe(ggobj = gg)
-```
-
-**3. Carregando o Dataset**
+**2. Carregando o Dataset**
 
 Para a leitura e importação de dados em Excel, utilizaremos o pacote \`readxl\`, para isso é necessário que instale e carregue este pacote. O pacote \`readxl\`, permite a leitura de arquivos Excel (.xlsx) sendo especialmente útil para importar dados que são frequentemente armazenados em planilhas.
 
@@ -89,7 +38,7 @@ dados <- read_excel("SensibilidadeCory2020.xlsx")
 head(dados)
 ```
 
-**4. Visualização de dados**
+**3. Visualização de dados**
 
 Para a visualização do conjunto de dados primeiramente foi calculadas as médias de diâmetro médio da colônia de cada isolado, em cada fungicida, dose e avaliação.
 
@@ -105,7 +54,7 @@ O gráfico de linhas aqui foi utilizado para ligar os pontos, mostrando o compor
 
 Para melhor visualização das variáveis respostas, utilizamos a "Dose" como um fator e adicionamos facetas com a função `facet_wrap()` para vizualizarmos os tratamentos separadamente.
 
-**4.1 Crescimento micelial x Doses (Isolados)**
+**3.1 Crescimento micelial x Doses (Isolados)**
 
 ```{r}
 library(ggsci)
@@ -141,7 +90,7 @@ for (tratam in unique(medias$trat)) {
 }
 ```
 
-**4.2 Crescimento micelial x Doses (Avaliações)**
+**3.2 Crescimento micelial x Doses (Avaliações)**
 
 ```{r}
 # Médias
@@ -175,7 +124,7 @@ for (tratam in unique(medias$trat)) {
 }
 ```
 
-**4.3 Crescimento micelial x Avaliações (Doses)**
+**3.3 Crescimento micelial x Avaliações (Doses)**
 
 ```{r}
 medias <- dados |> 
@@ -208,13 +157,15 @@ for (tratam in unique(medias$trat)) {
 }
 ```
 
-**Hipóteses**
+**4. Hipóteses**
 
 Hipótese nula (H0): Não há diferença de sensibilidade entre os isolados para nenhum dos fungicidas.
 
 Hipótese alternativa (H1): Há pelo menos uma diferença de sensibilidade entre os isolados para um dos fungicidas.
 
-**MODELOS DE REGRESSÃO - USANDO DIAM**
+**5. Modelos de Regressão Não-Linear**
+
+Os dados foram submetidos a análises de regressão não-linear, utilizando os modelos Weibull 1, Weibull 2, LL.3 e LN.3 para identificar o modelo que melhor representa a relação Log doses de cada fungicida e crescimento micelial de cada isolado, para estimar a CE50 (concentração efetiva de fungicida capaz de reduzir 50% do crescimento micelial).
 
 ```{r}
 library(dplyr)
@@ -308,6 +259,10 @@ for (chave in names(melhores_modelos)) {
 }
 ```
 
+**6. Estimativa da EC50**
+
+Utilizou o pacote `ec50estimator` para estimar a EC50 de cada fungicida para cada isolado, nas seis avaliações.
+
 ```{r}
 library(ec50estimator)
 df_ec50_LN <- estimate_EC50(diam ~ dose,
@@ -390,7 +345,7 @@ print(plot_W1)
 print(plot_W2)
 ```
 
-**Classificação da sensibilidade** **milecial**
+**7. Classificação da sensibilidade** **milecial**
 
 Com base nos critérios de informação Akaiake (AIC), foram selecionados para cada fungicida, isolado e avaliação, o melhor modelo matemático que representasse a relação **inibição do crescimento micelial (%)** *x* **Log doses fungicida (mg L^-1^),** para estimar a EC50 (Concentração efetiva de fungicida capaz de inibir 50% do crescimento micelial).
 
@@ -418,7 +373,7 @@ imagem <- image_read("sensibilidade.png")
 print(imagem)
 ```
 
-**Interpretação**
+**8. Interpretação**
 
 Com base na EC50 e na classificação de sensibilidade dos isolados de *Corynespora cassiicola* aos fungicidas Fox, Orkestra e Mancozeb, rejeita a hipótese nula H0.
 

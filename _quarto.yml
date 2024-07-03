@@ -24,7 +24,17 @@ website:
         text: Análises e Visualização de Dados
           
 
-          
+    right:
+       - icon: github 
+         menu:
+            - text: Gabriel A. D Serafini
+              url: https://github.com/gadserafini
+            - text: Lucas R. Versari
+              url: https://lversari.github.io/FIP606_2024/
+            - text: Emerson M. Del Ponte
+              url: https://github.com/emdelponte
+  
+  back-to-top-navigation: true        
 
 
 format:

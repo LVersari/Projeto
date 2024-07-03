@@ -18,7 +18,6 @@ Determinou-se a sensibilidade de nove isolados de *C. cassiicola*, oriundos de d
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(dplyr)
-library(stringr)
 library(rnaturalearthhires)
 
 library(rnaturalearth)
@@ -31,8 +30,7 @@ library(ggiraph)
 
 options("install.lock"=FALSE)
 library(conflicted)
-conflict_prefer("filter", "dplyr")
-conflict_prefer("lag", "dplyr")
+conflicts_prefer(dplyr::filter)
 
 # Função para converter graus, minutos e segundos para graus decimais
 dms_to_decimal <- function(dms, direction) {
@@ -82,6 +80,6 @@ girafe(ggobj = gg)
 
 Os tratamentos utilizados foram: Fungicidas Fox, Orkestra e Mancozeb, nas concentrações 0,5 mg L^-1^ ; 1,0 mg L^-1^ ; 2,5 mg L^-1^ ; 5,0 mg L^-1^ ; 10 mg L^-1^ ; 20 mg L^-1^ ; 50 mg L^-1^ e a testemunha sem fungicida.
 
-O delineamento experimental empregado foi o inteiramente casualizado (DIC), com três repetições. De cada isolado foram transferidos discos de 5 mm de diâmetro para placas de Petri com meio BDA + tratamentos e incubados a 28°C. As medições do diâmetro médio da colônia fúngica foram realizadas durante quinze dias, com intervalo de dois a três dias entre cada avaliação. Os dados foram submetidos a análises de regressão não-linear, utilizando os modelos probit, logit, Weibull 1, Weibull 2, LL.3 e LN.3 para identificar o modelo que melhor representa a relação Log doses de cada fungicida e crescimento micelial de cada isolado, para determinar a CE50 (concentrações efetivas na redução do diâmetro de colônias do fungo em 50%). A sensibilidade dos isolados foi classificada com base no valor da EC50 , para os fungicidas: Fox e Orkestra, Alta sensibilidade (\< 1 mg L^-1^), moderada sensibilidade (1 - 10 mg L^-1^) , pouca sensibilidade (10,1 - 50 mg L^-1^) e insensibilidade (\> 50 mg L^-1^), e para o fungicida Mancozeb: sensibilidade (\< 50 mg L^-1^) e insensibilidade (\> 50 \> 50 mg L^-1^).
+O delineamento experimental empregado foi o inteiramente casualizado (DIC), com três repetições. De cada isolado foram transferidos discos de 5 mm de diâmetro para placas de Petri com meio BDA + tratamentos e incubados a 28°C. As medições do diâmetro médio da colônia fúngica foram realizadas durante quinze dias, com intervalo de dois a três dias entre cada avaliação. Os dados foram submetidos a análises de regressão não-linear, utilizando os modelos Weibull 1, Weibull 2, LL.3 e LN.3 para identificar o modelo que melhor representa a relação Log doses de cada fungicida e crescimento micelial de cada isolado, para determinar a CE50 (concentração efetiva de fungicida capaz de reduzir 50% do crescimento micelial). A sensibilidade dos isolados foi classificada com base no valor da EC50 , para os fungicidas: Fox e Orkestra, Alta sensibilidade (\< 1 mg L^-1^), moderada sensibilidade (1 - 10 mg L^-1^) , pouca sensibilidade (10,1 - 50 mg L^-1^) e insensibilidade (\> 50 mg L^-1^), e para o fungicida Mancozeb: sensibilidade (\< 50 mg L^-1^) e insensibilidade (\> 50 \> 50 mg L^-1^).
 
 Os isolados apresentaram comportamentos distintos de sensibilidade entre si, para os fungicidas Fox e Orkestra, variando a sensibilidade entre alta sensibilidade e insensibilidade. Todos isolados foram sensíveis ao fungicidas Mancozeb. Não houve relação entre a origem e sensibilidade dos isolados ao fungicidas testados.
