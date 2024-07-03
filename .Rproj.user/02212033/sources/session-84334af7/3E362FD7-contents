@@ -28,9 +28,8 @@ library(sf)
 
 library(ggiraph)
 
-options("install.lock"=FALSE)
-library(conflicted)
-conflicts_prefer(dplyr::filter)
+conflict_prefer("filter", "dplyr")
+conflict_prefer("lag", "dplyr")
 
 # Função para converter graus, minutos e segundos para graus decimais
 dms_to_decimal <- function(dms, direction) {
